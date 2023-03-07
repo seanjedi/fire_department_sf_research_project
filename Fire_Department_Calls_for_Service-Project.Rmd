@@ -6,7 +6,12 @@ output: html_document
 ---
 
 # Fire Department Calls for Service in San Francisco
-```{r}
+
+## Loading our data sets and doing pre-processing
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#install.packages('tidyverse', dependencies = TRUE)
 ## Script to get the dataset if we want the newest data
 ## Warning, this could take a very long time, possibly longer than 30 mins
 # install.packages("RSocrata")
@@ -16,15 +21,19 @@ output: html_document
 #)
 # write_csv(fire_department, "Fire_Department_Calls_for_Service.csv")
 
-```
-
-# Getting Weather Data
-```{r}
-library(tidyverse)
-#weatherFireData <- read_csv("Fire_Department_Calls_for_Service_weather.csv")
+require("tidyverse")
 weatherData <- read_csv("72494.csv")
 firefighter <- read_csv("Fire_Department_Calls_for_Service.csv")
 ```
+
+Get rid of fields with missing data and rename columns to be easier to work with (calls for service data set)
+
+```{r}
+names(firefighter)<-make.names(names(firefighter),unique = TRUE) 
+firefighter <- drop_na(firefighter)
+```
+
+Add column names and filter to the date range matching the calls for service data set (weather data set)
 
 ```{r}
 names(weatherData) <- c("date", "tavg", "tmin", "tmax", "prcp", "snow", "wdir", "wssp", "wpgt", "pres", "tsun")
@@ -32,141 +41,120 @@ weatherData$date <- as.Date(weatherData$date)
 weatherData <- filter(weatherData, weatherData$date >= as.Date("2001-01-01"))
 ```
 
-```{r}
-firefighter$date <- as.Date(firefighter$`Call Date`, format="%m/%d/%Y")
-```
+Join our weather and fire department data together, and free some memory
 
 ```{r}
+firefighter$date <- as.Date(firefighter$Call.Date, format="%m/%d/%Y")
 firefighter <- left_join(firefighter, weatherData, by="date")
+fire_department <- firefighter
+rm(firefighter)
+gc()
 ```
-
-```{r}
-write_csv(firefighter, "joineddata.csv")
-```
-
-# Loading and breaking down Fire Department Dataset 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-#install.packages('tidyverse', dependencies = TRUE)
-require("tidyverse")
-fire_department <- read.csv("./Fire_Department_Calls_for_Service_slim_50.csv")
-fire_department <- read.csv("./test.csv")
-
-#fire_department <- read.csv("./Fire_Department_Calls_for_Service.csv")
-#fire_department <- fire_department[rev(order(as.Date(fire_department$Entry.DtTm, format="%m/%d/%Y %I:%M:%S %p"))),]
-#fire_department2 <- head(fire_department, 1000000)
-# fire_department2 <- sample_n(fire_department, 0.5)
-#fire_department2 <-sample_frac(fire_department,.5)
-#fire_department2  %>% View()
-#write.csv(fire_department2, "./Fire_Department_Calls_for_Service_slim.csv")
-```
-
 
 # Analysis of data within Fire Department dataset
 
 ```{r}
 summary(fire_department)
 ```
+
 > Numeric & Boolean Variables
 
-Variable | Description | Data Type
---------- | ---------- | ---------
-ALS Unit |Does this unit includes ALS (Advance Life Support) resources? Is there a paramedic in this unit?  | Boolean
-Number of Alarms | Number of alarms associated with the incident. This is a number between 1 and 5 | Numeric
-Unit sequence in call dispatch |A number that indicates the order this unit was assigned to this call| Numeric
-Analysis.Neighborhoods | The neighborhood numeric value where the call orginated | Numeric
+| Variable                       | Description                                                                                      | Data Type |
+|------------------|-----------------------------------|------------------|
+| ALS Unit                       | Does this unit includes ALS (Advance Life Support) resources? Is there a paramedic in this unit? | Boolean   |
+| Number of Alarms               | Number of alarms associated with the incident. This is a number between 1 and 5                  | Numeric   |
+| Unit sequence in call dispatch | A number that indicates the order this unit was assigned to this call                            | Numeric   |
+| Analysis.Neighborhoods         | The neighborhood numeric value where the call originated                                         | Numeric   |
 
 > Text Variables
 
-Variable | Description | Data Type
---------- | ---------- | ---------
-Address | Address of midblock point associated with incident (obfuscated address to protect caller privacy) | Text
-Battalion | Emergency Response District (There are 9 Fire Emergency Response Districts) | Text
-Box | Fire box associated with the address of the incident. A box is the smallest area used to divide the City. Each box is associated with a unique unit dispatch order. The City is divided into more than 2,400 boxes | Text
-Call Final Disposition | Disposition of the call (Code). For example TH2: Transport to Hospital - Code 2, FIR: Resolved by Fire Department| Text
-Call Number | A unique 9-digit number assigned by the 911 Dispatch Center (DEM) to this call. These number are used for both Police and Fire calls | Text
-Call Type | Type of call the incident falls into. See the list below | Text
-Call Type Group | Call types are divided into four main groups: Fire, Alarm, Potential Life Threatening and Non Life Threatening | Text
-City | City of incident | Text
-Final Priority |Final call priority (Code 2: Non-Emergency or Code 3:Emergency) | Text
-Fire Prevention District |Bureau of Fire Prevention District associated with this address| Text
-Incident Number | A unique 8-digit number assigned by DEM to this Fire incident | Text
-Location | Latitude and longitude of address obfuscated either to the midblock, intersection or call box | Coordinates
-Neighborhood District | Neighborhood District associated with this address, boundaries available here: https://data.sfgov.org/d/p5b7-5n3h| Text
-Original Priority | Initial call priority (Code 2: Non-Emergency or Code 3:Emergency) | Text
-Priority | Call priority (Code 2: Non-Emergency or Code 3:Emergency) | Text
-RowID | Unique identifier used for managing data updates. It is the concatenation of Call Number and Unit ID separated by a dash| Text
-Station Area | Fire Station First Response Area associated with the address of the incident | Text
-Supervisor District | Supervisor District associated with this address| Text
-Unit ID | Unit Identifier. For example E01 for Engine 1 or T01 for Truck 1 | Text
-Unit Type | Unit type | Text
-Zipcode of Incident | Zipcode of incident | Text
+| Variable                 | Description                                                                                                                                                                                                        | Data Type   |
+|------------------|------------------------------------|------------------|
+| Address                  | Address of midblock point associated with incident (obfuscated address to protect caller privacy)                                                                                                                  | Text        |
+| Battalion                | Emergency Response District (There are 9 Fire Emergency Response Districts)                                                                                                                                        | Text        |
+| Box                      | Fire box associated with the address of the incident. A box is the smallest area used to divide the City. Each box is associated with a unique unit dispatch order. The City is divided into more than 2,400 boxes | Text        |
+| Call Final Disposition   | Disposition of the call (Code). For example TH2: Transport to Hospital - Code 2, FIR: Resolved by Fire Department                                                                                                  | Text        |
+| Call Number              | A unique 9-digit number assigned by the 911 Dispatch Center (DEM) to this call. These number are used for both Police and Fire calls                                                                               | Text        |
+| Call Type                | Type of call the incident falls into. See the list below                                                                                                                                                           | Text        |
+| Call Type Group          | Call types are divided into four main groups: Fire, Alarm, Potential Life Threatening and Non Life Threatening                                                                                                     | Text        |
+| City                     | City of incident                                                                                                                                                                                                   | Text        |
+| Final Priority           | Final call priority (Code 2: Non-Emergency or Code 3:Emergency)                                                                                                                                                    | Text        |
+| Fire Prevention District | Bureau of Fire Prevention District associated with this address                                                                                                                                                    | Text        |
+| Incident Number          | A unique 8-digit number assigned by DEM to this Fire incident                                                                                                                                                      | Text        |
+| Location                 | Latitude and longitude of address obfuscated either to the midblock, intersection or call box                                                                                                                      | Coordinates |
+| Neighborhood District    | Neighborhood District associated with this address, boundaries available here: <https://data.sfgov.org/d/p5b7-5n3h>                                                                                                | Text        |
+| Original Priority        | Initial call priority (Code 2: Non-Emergency or Code 3:Emergency)                                                                                                                                                  | Text        |
+| Priority                 | Call priority (Code 2: Non-Emergency or Code 3:Emergency)                                                                                                                                                          | Text        |
+| RowID                    | Unique identifier used for managing data updates. It is the concatenation of Call Number and Unit ID separated by a dash                                                                                           | Text        |
+| Station Area             | Fire Station First Response Area associated with the address of the incident                                                                                                                                       | Text        |
+| Supervisor District      | Supervisor District associated with this address                                                                                                                                                                   | Text        |
+| Unit ID                  | Unit Identifier. For example E01 for Engine 1 or T01 for Truck 1                                                                                                                                                   | Text        |
+| Unit Type                | Unit type                                                                                                                                                                                                          | Text        |
+| Zipcode of Incident      | Zipcode of incident                                                                                                                                                                                                | Text        |
 
 > Date & Time Variables
 
-Variable | Description | Data Type
---------- | ---------- | ---------
-Available DtTm | Date and time this unit is not longer assigned to this call and it is available for another dispatch | Date & Time
-AVL Validated On Scene DtTm | Updated date and time the unit arrived on scene based on existing unit AVL coordinates | Date & Time
-Call Date | Date the call is received at the 911 Dispatch Center. Used for reporting purposes | Date & Time
-Dispatch DtTm | Date and time the 911 operator dispatches this unit to the call | Date & Time
-Entry DtTm | Date and time the 911 operator submits the entry of the initical call information into the CAD system | Date & Time
-Hospital DtTm | If this unit is an ambulance, date and time the unit arrives to the hospital | Date & Time
-On Scene DtTm | Date and time the unit records arriving to the location of the incident | Date & Time
-Received DtTm | Date and time of call is received at the 911 Dispatch Center | Date & Time
-Response DtTm | Date and time this unit acknowledges the dispatch and records that the unit is en route to the location of the call | Date & Time
-Transport DtTm | If this unit is an ambulance, date and time the unit begins the transport unit arrives to hospital | Date & Time
-Watch Date | Watch date when the call is received. Watch date starts at 0800 each morning and ends at 0800 the next day | Date & Time
-
+| Variable                    | Description                                                                                                         | Data Type   |
+|------------------|-----------------------------------|------------------|
+| Available DtTm              | Date and time this unit is not longer assigned to this call and it is available for another dispatch                | Date & Time |
+| AVL Validated On Scene DtTm | Updated date and time the unit arrived on scene based on existing unit AVL coordinates                              | Date & Time |
+| Call Date                   | Date the call is received at the 911 Dispatch Center. Used for reporting purposes                                   | Date & Time |
+| Dispatch DtTm               | Date and time the 911 operator dispatches this unit to the call                                                     | Date & Time |
+| Entry DtTm                  | Date and time the 911 operator submits the entry of the initial call information into the CAD system                | Date & Time |
+| Hospital DtTm               | If this unit is an ambulance, date and time the unit arrives to the hospital                                        | Date & Time |
+| On Scene DtTm               | Date and time the unit records arriving to the location of the incident                                             | Date & Time |
+| Received DtTm               | Date and time of call is received at the 911 Dispatch Center                                                        | Date & Time |
+| Response DtTm               | Date and time this unit acknowledges the dispatch and records that the unit is en route to the location of the call | Date & Time |
+| Transport DtTm              | If this unit is an ambulance, date and time the unit begins the transport unit arrives to hospital                  | Date & Time |
+| Watch Date                  | Watch date when the call is received. Watch date starts at 0800 each morning and ends at 0800 the next day          | Date & Time |
 
 > Call Types - categories
 
-* Administrative
-* Aircraft Emergency
-* Alarms
-* Assist Police
-* Citizen Assist / Service Call
-* Confined Space / Structure Collapse
-* Electrical Hazard
-* Elevator / Escalator Rescue
-* Explosion
-* Extrication / Entrapped (Machinery, Vehicle)
-* Fuel Spill
-* Gas Leak (Natural and LP Gases)
-* HazMat
-* High Angle Rescue
-* Industrial Accidents
-* Lightning Strike (Investigation)
-* Marine Fire
-* Medical Incident
-* Mutual Aid / Assist Outside Agency
-* Odor (Strange / Unknown)
-* Oil Spill
-* Other
-* Outside Fire
-* Smoke Investigation (Outside)
-* Structure Fire
-* Suspicious Package
-* Traffic Collision
-* Train / Rail Fire
-* Train / Rail Incident
-* Transfer
-* Vehicle Fire
-* Water Rescue
-* Watercraft in Distress
+-   Administrative
+-   Aircraft Emergency
+-   Alarms
+-   Assist Police
+-   Citizen Assist / Service Call
+-   Confined Space / Structure Collapse
+-   Electrical Hazard
+-   Elevator / Escalator Rescue
+-   Explosion
+-   Extrication / Entrapped (Machinery, Vehicle)
+-   Fuel Spill
+-   Gas Leak (Natural and LP Gases)
+-   HazMat
+-   High Angle Rescue
+-   Industrial Accidents
+-   Lightning Strike (Investigation)
+-   Marine Fire
+-   Medical Incident
+-   Mutual Aid / Assist Outside Agency
+-   Odor (Strange / Unknown)
+-   Oil Spill
+-   Other
+-   Outside Fire
+-   Smoke Investigation (Outside)
+-   Structure Fire
+-   Suspicious Package
+-   Traffic Collision
+-   Train / Rail Fire
+-   Train / Rail Incident
+-   Transfer
+-   Vehicle Fire
+-   Water Rescue
+-   Watercraft in Distress
 
 > New Fields
 
-We made a few new fields with the time data
-Variable | Description | Related Variables
---------- | ---------- | ---------
-timeTaken | The difference between the time that the unit is on scene, and the time that the unit acknowledges the dispatch | Available.DtTm - Response.DtTm
-arrivalTime | The difference between the time that the unit is no longer assigned to a call, and the time that the unit received the dispatch from the 911 center | On.Scene.DtTm - Received.DtTm
-hospitalTimeToArrive | If the unit is an ambulance, this is the difference between the time that the unit receives a call and the time the unit arrives to the hospital | Hospital DtTm - Received.DtTm
-transportTime | If the unit is an ambulance, this is the difference between the time that the unit starts transport to a hospital and the time the unit arrives to the hospital | Hospital DtTm - Transport DtTm
-responseTime | The time difference between receiving a call and making a response | Response DtTm - Received DtTm
-StationArea | Changed the character string of the station areas to a numeric value | as.numeric(Station.Area)
-Box | Changed the character string of the station box area to a numeric value | as.numeric(Box)
+| Name                 | Description                                                                                                                                                     | Related Variables              |
+|------------------------|------------------------|------------------------|
+| timeTaken            | The difference between the time that the unit is on scene, and the time that the unit acknowledges the dispatch                                                 | Available.DtTm - Response.DtTm |
+| arrivalTime          | The difference between the time that the unit is no longer assigned to a call, and the time that the unit received the dispatch from the 911 center             | On.Scene.DtTm - Received.DtTm  |
+| hospitalTimeToArrive | If the unit is an ambulance, this is the difference between the time that the unit receives a call and the time the unit arrives to the hospital                | Hospital DtTm - Received.DtTm  |
+| transportTime        | If the unit is an ambulance, this is the difference between the time that the unit starts transport to a hospital and the time the unit arrives to the hospital | Hospital DtTm - Transport DtTm |
+| StationArea          | Changed the character string of the station areas to a numeric value                                                                                            | as.numeric(Station.Area)       |
+| Box                  | Changed the character string of the station box area to a numeric value                                                                                         | as.numeric(Box)                |
+
 ```{r}
 fire_department <- mutate(fire_department, timetaken = as.numeric(as.POSIXct(Available.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Response.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
 
@@ -182,68 +170,58 @@ fire_department <- mutate(fire_department, StationArea = as.numeric(Station.Area
 fire_department <- mutate(fire_department, Box = as.numeric(Box))
 ```
 
-Get rid of fields with missing data
-```{r}
-names(fire_department)<-make.names(names(fire_department),unique = TRUE) 
-fire_department <- drop_na(fire_department)
-```
-
 ## Exploratory Data Analysis
 
 ```{r}
 fire_department %>%
-  #filter(Call.Type == "Marine Fire" | Call.Type == "Outside Fire" | Call.Type == "Structure Fire" | Call.Type == "Train / Rain Fire" | Call.Type == "Vehicle Fire") %>%
   filter(Call.Type.Group == "Fire") %>%
   mutate(timetaken = as.numeric(as.POSIXct(Available.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Response.DtTm, format = "%m/%d/%Y %I:%M:%S %p"))) %>%
   ggplot(aes(Number.of.Alarms, timetaken, group=Number.of.Alarms, fill=Number.of.Alarms)) + geom_boxplot() + 
   labs(x = "Number of alarms at this incident", y = "Time until the responding unit becomes available (seconds)")
 ```
-It looks like as the number of alarms increases the median time for a unit to become available again increases as well. 
-The number of alarms is a categorical variable because it can only take on a value from 1-5.
+
+It looks like as the number of alarms increases the median time for a unit to become available again increases as well. The number of alarms is a categorical variable because it can only take on a value from 1-5.
 
 ```{r}
 fire_department %>%
-  #filter(Call.Type == "Marine Fire" | Call.Type == "Outside Fire" | Call.Type == "Structure Fire" | Call.Type == "Train / Rain Fire" | Call.Type == "Vehicle Fire") %>%
   filter(Call.Type.Group == "Fire") %>%
   ggplot(aes(Number.of.Alarms, arrivalTime, group=Number.of.Alarms, fill=Number.of.Alarms)) + geom_boxplot() + 
   labs(x = "Number of alarms at this incident", y = "Time until a unit arrives (seconds)")
 ```
-However it looks like as the number of alarms increases, the median time for a unit to arrive does not significantly change until we have 5 alarms. 
-It seems that the number of alarms in an incident may cause the arrival time to increase for all the units. 
+
+However it looks like as the number of alarms increases, the median time for a unit to arrive does not significantly change until we have 5 alarms. It seems that the number of alarms in an incident may cause the arrival time to increase for all the units.
 
 ```{r}
 fire_department %>%
-  #filter(Call.Type == "Marine Fire" | Call.Type == "Outside Fire" | Call.Type == "Structure Fire" | Call.Type == "Train / Rain Fire" | Call.Type == "Vehicle Fire") %>%
   filter(Call.Type.Group == "Fire") %>%
   group_by(Incident.Number) %>%
   summarise(count = n(), callfinishtime = max(timetaken), type=Call.Type) %>%
-  #filter(type != "Other" & count > 0) %>%
   ggplot(aes(count, callfinishtime, color=type)) + geom_jitter() +
   labs(x = "Number of units responding", y = "Time until the last responding unit becomes available (seconds)")
 ```
+
 It seems that the number of units responding to a call causes the last unit to become available again the longest, suggesting that having less units respond to a call would make all the units available again sooner. We can see that this might be dependent on what type of call it is, with a structure fire causing more units to be present and stay longer.
+
 ```{r}
 fire_department %>%
-  #filter(Call.Type == "Marine Fire" | Call.Type == "Outside Fire" | Call.Type == "Structure Fire" | Call.Type == "Train / Rain Fire" | Call.Type == "Vehicle Fire") %>%
   filter(Call.Type.Group == "Fire") %>%
   group_by(Incident.Number) %>%
   summarise(count = n(), callfinishtime = max(arrivalTime), type=Call.Type) %>%
-  #filter(type != "Other" & count > 0) %>%
   ggplot(aes(count, callfinishtime, color=type)) + geom_jitter() +
   labs(x = "Number of units responding", y = "Time until the last responding unit arrives (seconds)")
 ```
-We can see that the number of units that are called would also increase the time that the last unit would arrive, with this also being higher on cases with a structural fire. 
+
+We can see that the number of units that are called would also increase the time that the last unit would arrive, with this also being higher on cases with a structural fire.
+
 ```{r}
 fire_department %>%
-  #filter(Call.Type == "Marine Fire" | Call.Type == "Outside Fire" | Call.Type == "Structure Fire" | Call.Type == "Train / Rain Fire" | Call.Type == "Vehicle Fire") %>%
-  #filter(type != "Other" & count > 0) %>%
-  #filter(Call.Type.Group == "Fire") %>%
   mutate(category=cut(Final.Priority, 2, labels=c("Non-Emergency", "Emergency"))) %>%
   summarise(count = n(), alarms=Number.of.Alarms, priority=category) %>%
   ggplot(aes( alarms, count, color=priority)) + geom_jitter() 
 ```
 
-This shows us that all non-emergency calls will only have 1 alarm, however there is not a good method of differentiating what counts as an emergency call or a non-emergency call with the number of alarms in this example. 
+This shows us that all non-emergency calls will only have 1 alarm, however there is not a good method of differentiating what counts as an emergency call or a non-emergency call with the number of alarms in this example.
+
 ```{r}
 fire_department %>%
   filter(Call.Type != "Medical Incident" & Call.Type != "Traffic Collision" & Call.Type != "Other")%>%
@@ -251,6 +229,7 @@ fire_department %>%
   summarize(count = n()) %>%
   ggplot(aes(count, Call.Type)) + geom_point()
 ```
+
 ```{r}
 fire_department$Call.Type.Group[fire_department$Call.Type.Group == ''] <- 'Other'
 fire_department %>%
@@ -260,14 +239,14 @@ fire_department %>%
 
 ```
 
-
 ## Statistical Analysis
+
 ```{r}
-fire_department <- drop_na(fire_department)
 fire_department %>%
   select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime") %>%
   cor()
 ```
+
 ```{r}
 fire_department %>%
   select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime") %>%
@@ -279,3 +258,50 @@ fire_department %>%
   select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime") %>%
   cor(method="spearman")
 ```
+
+```{r}
+fire_department %>%
+  filter(Call.Type == "Structure Fire") %>%
+  group_by(Incident.Number) %>%
+  summarise(count = n(), callfinishtime = max(timetaken), type=Call.Type) %>%
+  ggplot(aes(count, callfinishtime)) + geom_jitter() + geom_smooth(method="lm") +
+  labs(x = "Number of units responding", y = "Time until the last responding unit becomes available (seconds)")
+
+```
+
+```{r}
+toTest <- filter(fire_department, Call.Type == "Structure Fire")
+toTest <- group_by(toTest, Incident.Number)
+toTest <- summarise(toTest, count = n(), callfinishtime = max(timetaken))
+myLm <- lm(toTest$callfinishtime ~ toTest$count)
+summary(myLm)
+```
+
+With a P-value significantly below 0.05 we can conclude that there is at least some correlation between the time it takes for an incident to be resolved and the number of units responding. However, with an R-squared value of 0.08, only 8% of variation in the call finish time can be explained by the number of units at this incident. This makes sense considering the number of units is likely a function of how severe the incident is, or other factors specific to individual incidents. In other words, there is likely some other variable which predicts both how many units are responding and how long an incident takes to resolve.
+
+```{r}
+smaller_data <- filter(fire_department, Call.Type.Group == "Fire")
+cor.test(smaller_data$timetaken, smaller_data$Number.of.Alarms, method="spearman")
+
+cor.test(smaller_data$arrivalTime, smaller_data$Number.of.Alarms, method="spearman")
+```
+
+In the above tests we can see that the time taken for individual units to become available is very lightly correlated with the number of alarms at a fire incident. The same can be said for the arrival time. Note that we used Spearman's correlation due to the presence of outliers in our data.
+
+```{r}
+emerg <- filter(fire_department, Priority == 3)
+non_emerg <- filter(fire_department, Priority == 2)
+
+t.test(emerg$timetaken, non_emerg$timetaken)
+```
+
+In the above tests we can see that the mean time taken between emergency and non-emergency incidents for individual units is in fact different. Looking at the confidence interval (and the values of the means) we can see that the time taken for individual units to become available again in emergency incidents is lower than in non-emergency incidents.
+
+```{r}
+life_threataning <- filter(fire_department, Call.Type.Group == "Potentially Life-Threatening")
+non_life_threataning <- filter(fire_department, Call.Type.Group == "Non Life-threatening")
+
+t.test(life_threataning$timetaken, non_life_threataning$timetaken)
+```
+
+In the above tests we can see that the mean time taken for life-threatening events is lower than the mean time taken for non life-threatening events. This would make sense considering the time taken for life threatening events would mean life or death for the people who were in danger.
