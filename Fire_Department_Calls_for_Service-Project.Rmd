@@ -5,6 +5,46 @@ date: "2023-02-28"
 output: html_document
 ---
 
+# Fire Department Calls for Service in San Francisco
+```{r}
+## Script to get the dataset if we want the newest data
+## Warning, this could take a very long time, possibly longer than 30 mins
+# install.packages("RSocrata")
+#library("RSocrata")
+#fire_department <- read.socrata(
+#  "https://data.sfgov.org/resource/nuek-vuh3.json",
+#)
+# write_csv(fire_department, "Fire_Department_Calls_for_Service.csv")
+
+```
+
+# Getting Weather Data
+```{r}
+library(tidyverse)
+#weatherFireData <- read_csv("Fire_Department_Calls_for_Service_weather.csv")
+weatherData <- read_csv("72494.csv")
+firefighter <- read_csv("Fire_Department_Calls_for_Service.csv")
+```
+
+```{r}
+names(weatherData) <- c("date", "tavg", "tmin", "tmax", "prcp", "snow", "wdir", "wssp", "wpgt", "pres", "tsun")
+weatherData$date <- as.Date(weatherData$date)
+weatherData <- filter(weatherData, weatherData$date >= as.Date("2001-01-01"))
+```
+
+```{r}
+firefighter$date <- as.Date(firefighter$`Call Date`, format="%m/%d/%Y")
+```
+
+```{r}
+firefighter <- left_join(firefighter, weatherData, by="date")
+```
+
+```{r}
+write_csv(firefighter, "joineddata.csv")
+```
+
+# Loading and breaking down Fire Department Dataset 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 #install.packages('tidyverse', dependencies = TRUE)
@@ -21,15 +61,8 @@ fire_department <- read.csv("./test.csv")
 #write.csv(fire_department2, "./Fire_Department_Calls_for_Service_slim.csv")
 ```
 
-```{r}
-install.packages("devtools")
-library("devtools")
-install_github("Ram-N/weatherData")
-library("weatherData")
-getWeatherForDate("SFO", "2020-05-05")
-```
 
-# Fire Department Calls for Service in San Francisco
+# Analysis of data within Fire Department dataset
 
 ```{r}
 summary(fire_department)

@@ -75,7 +75,7 @@ def save_weather(dict_data):
         with open(csv_file, 'w') as csvfile:
             writer = csv.writer(csvfile)
             key_list = list(dict_data.keys())
-            limit = len(key_list)
+            limit = len(dict_data)
             writer.writerow(dict_data.keys())
             for i in range(limit):
                 writer.writerow([dict_data[x][i] for x in key_list])
