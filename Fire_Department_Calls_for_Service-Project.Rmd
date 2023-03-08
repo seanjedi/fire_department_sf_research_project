@@ -317,22 +317,12 @@ myLm <- lm(toTest$callfinishtime ~ toTest$count)
 summary(myLm)
 ```
 
-With a P-value significantly below 0.05 we can conclude that there is at least some correlation between the time it takes for an incident to be resolved and the number of units responding. However, with an R-squared value of 0.08, only 8% of variation in the call finish time can be explained by the number of units at this incident. This makes sense considering the number of units is likely a function of how severe the incident is, or other factors specific to individual incidents. In other words, there is likely some other variable which predicts both how many units are responding and how long an incident takes to resolve.
+With a P-value significantly below 0.05 we can conclude that there is at least some correlation between the time it takes for an incident to be resolved and the number of units responding. However, with an R-squared value of 0.15, only 15% of variation in the call finish time can be explained by the number of units at this incident. This makes sense considering the number of units is likely a function of how severe the incident is, or other factors specific to individual incidents. In other words, there is likely some other variable which predicts both how many units are responding and how long an incident takes to resolve.
 
 ```{r}
 smaller_data <- filter(fire_department, Call.Type.Group == "Fire")
 cor.test(smaller_data$timetaken, smaller_data$Number.of.Alarms, method = "spearman")
-
-cor.test(smaller_data$arrivalTime, smaller_data$Number.of.Alarms, method = "spearman")
 ```
-
-```{r}
-fire_department %>%
-  filter(Call.Type.Group == "Fire") %>%
-  select(timetaken, Number.of.Alarms) %>%
-  cor(method = "spearman")
-```
-
 In the above tests we can see that the time taken for individual units to become available is very lightly correlated with the number of alarms at a fire incident. The same can be said for the arrival time. Note that we used Spearman's correlation due to the presence of outliers in our data.
 
 ```{r}
@@ -341,7 +331,6 @@ non_emerg <- filter(fire_department, Priority == 2)
 
 t.test(emerg$timetaken, non_emerg$timetaken)
 ```
-
 In the above tests we can see that the mean time taken between emergency and non-emergency incidents for individual units is in fact different. Looking at the confidence interval (and the values of the means) we can see that the time taken for individual units to become available again in emergency incidents is lower than in non-emergency incidents.
 
 ```{r}
@@ -350,15 +339,16 @@ non_life_threataning <- filter(fire_department, Call.Type.Group == "Non Life-thr
 
 t.test(life_threataning$timetaken, non_life_threataning$timetaken)
 ```
-
 In the above tests we can see that the mean time taken for life-threatening events is lower than the mean time taken for non life-threatening events. This would make sense considering the time taken for life threatening events would mean life or death for the people who were in danger.
 
 ### Precipitation correlation analysis
+
 ```{r}
 raining <- filter(fire_department, prcp > 1)
 not_raining <- filter(fire_department, prcp <= 1)
 t.test(raining$timetaken, not_raining$timetaken)
 ```
+
 ```{r}
 cor.test(fire_department$timetaken, fire_department$prcp, method = "spearman")
 ```
