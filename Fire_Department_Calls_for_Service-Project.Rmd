@@ -55,6 +55,7 @@ gc()
 ```
 
 Need to fill in new weather data missing data with either 0 or na, so that we can anlyze it later
+
 ```{r}
 fire_department <- fire_department %>% 
     mutate_if(is.numeric, ~replace_na(., 0))
@@ -62,6 +63,7 @@ fire_department[is.na(fire_department)] <- ""
 ```
 
 Adding more fields for time data analysis
+
 ```{r}
 fire_department <- mutate(fire_department, timetaken = as.numeric(as.POSIXct(Available.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Response.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
 
@@ -77,7 +79,6 @@ fire_department <- mutate(fire_department, StationArea = as.numeric(Station.Area
 fire_department <- mutate(fire_department, Box = as.numeric(Box))
 ```
 
-
 # Analysis of data within Fire Department dataset
 
 ```{r}
@@ -91,26 +92,26 @@ summary(fire_department)
 > Numeric & Boolean Variables
 
 | Variable                       | Description                                                                                      | Data Type |
-|------------------|-----------------------------------|------------------|
+|-------------------|-----------------------------------|-------------------|
 | ALS Unit                       | Does this unit includes ALS (Advance Life Support) resources? Is there a paramedic in this unit? | Boolean   |
 | Number of Alarms               | Number of alarms associated with the incident. This is a number between 1 and 5                  | Numeric   |
 | Unit sequence in call dispatch | A number that indicates the order this unit was assigned to this call                            | Numeric   |
 | Analysis.Neighborhoods         | The neighborhood numeric value where the call originated                                         | Numeric   |
-| tavg                           | The average air temperature in °C                                                                | Numeric  |
-| tmin                           | The minimum air temperature in °C                                                                | Numeric  |
-| tmax                           | The maximum air temperature in °C                                                                | Numeric  |
-| prcp                           | The daily precipitation total in mm	Float                                                       | Numeric  |
-| snow                           | The maximum snow depth in mm	Integer                                                             | Numeric  |
-| wdir                           | The average wind direction in degrees (°)                                                        | Numeric  |
-| wssp                           | The average wind speed in km/h                                                                   | Numeric  |
-| wpgt                           | The peak wind gust in km/h                                                                       | Numeric  |
-| pres                           | The average sea-level air pressure in hPa	Float                                                 | Numeric  |
-| tsun                           | The daily sunshine total in minutes (m)	Integer                                                 | Numeric  |
+| tavg                           | The average air temperature in °C                                                                | Numeric   |
+| tmin                           | The minimum air temperature in °C                                                                | Numeric   |
+| tmax                           | The maximum air temperature in °C                                                                | Numeric   |
+| prcp                           | The daily precipitation total in mm Float                                                        | Numeric   |
+| snow                           | The maximum snow depth in mm Integer                                                             | Numeric   |
+| wdir                           | The average wind direction in degrees (°)                                                        | Numeric   |
+| wssp                           | The average wind speed in km/h                                                                   | Numeric   |
+| wpgt                           | The peak wind gust in km/h                                                                       | Numeric   |
+| pres                           | The average sea-level air pressure in hPa Float                                                  | Numeric   |
+| tsun                           | The daily sunshine total in minutes (m) Integer                                                  | Numeric   |
 
 > Text Variables
 
 | Variable                 | Description                                                                                                                                                                                                        | Data Type   |
-|------------------|------------------------------------|------------------|
+|------------------|-----------------------------------|------------------|
 | Address                  | Address of midblock point associated with incident (obfuscated address to protect caller privacy)                                                                                                                  | Text        |
 | Battalion                | Emergency Response District (There are 9 Fire Emergency Response Districts)                                                                                                                                        | Text        |
 | Box                      | Fire box associated with the address of the incident. A box is the smallest area used to divide the City. Each box is associated with a unique unit dispatch order. The City is divided into more than 2,400 boxes | Text        |
@@ -136,7 +137,7 @@ summary(fire_department)
 > Date & Time Variables
 
 | Variable                    | Description                                                                                                         | Data Type   |
-|------------------|-----------------------------------|------------------|
+|-------------------|-----------------------------------|-------------------|
 | Available DtTm              | Date and time this unit is not longer assigned to this call and it is available for another dispatch                | Date & Time |
 | AVL Validated On Scene DtTm | Updated date and time the unit arrived on scene based on existing unit AVL coordinates                              | Date & Time |
 | Call Date                   | Date the call is received at the 911 Dispatch Center. Used for reporting purposes                                   | Date & Time |
@@ -189,8 +190,8 @@ summary(fire_department)
 
 | Name                 | Description                                                                                                                                                     | Related Variables              |
 |------------------------|------------------------|------------------------|
-| arrivalTime            | The difference between the time that the unit is on scene, and the time that the unit acknowledges the dispatch                                                 | Available.DtTm - Response.DtTm |
-| timeTaken          | The difference between the time that the unit is no longer assigned to a call, and the time that the unit received the dispatch from the 911 center             | On.Scene.DtTm - Received.DtTm  |
+| arrivalTime          | The difference between the time that the unit is on scene, and the time that the unit acknowledges the dispatch                                                 | Available.DtTm - Response.DtTm |
+| timeTaken            | The difference between the time that the unit is no longer assigned to a call, and the time that the unit received the dispatch from the 911 center             | On.Scene.DtTm - Received.DtTm  |
 | hospitalTimeToArrive | If the unit is an ambulance, this is the difference between the time that the unit receives a call and the time the unit arrives to the hospital                | Hospital DtTm - Received.DtTm  |
 | transportTime        | If the unit is an ambulance, this is the difference between the time that the unit starts transport to a hospital and the time the unit arrives to the hospital | Hospital DtTm - Transport DtTm |
 | StationArea          | Changed the character string of the station areas to a numeric value                                                                                            | as.numeric(Station.Area)       |
@@ -253,17 +254,19 @@ fire_department %>%
   filter(Call.Type != "Medical Incident" & Call.Type != "Traffic Collision" & Call.Type != "Other")%>%
   group_by(Call.Type) %>%
   summarize(count = n()) %>%
-  ggplot(aes(count, Call.Type)) + geom_point()
+  ggplot(aes(count, Call.Type)) + geom_bar(stat="identity")
 ```
+In this plot we can see that after filtering incidents with the Other, Traffic Collision, and Medical Incident types the most common incident types are Citizen Assists and Structure fires.
 
 ```{r}
 fire_department$Call.Type.Group[fire_department$Call.Type.Group == ''] <- 'Other'
 fire_department %>%
   group_by(Call.Type.Group) %>%
   summarize(count = n()) %>%
-  ggplot(aes(count, Call.Type.Group)) + geom_point()
+  ggplot(aes(count, Call.Type.Group)) + geom_bar(stat="identity")
 
 ```
+In the above plot we can see that potentially life threatening incidents are the most common, while there is a very small amount of fire and alarm incidents.
 
 ## Statistical Analysis
 
@@ -304,7 +307,7 @@ myLm <- lm(toTest$callfinishtime ~ toTest$count)
 summary(myLm)
 ```
 
-With a P-value significantly below 0.05 we can conclude that there is at least some correlation between the time it takes for an incident to be resolved and the number of units responding. However, with an R-squared value of 0.08, only 8% of variation in the call finish time can be explained by the number of units at this incident. This makes sense considering the number of units is likely a function of how severe the incident is, or other factors specific to individual incidents. In other words, there is likely some other variable which predicts both how many units are responding and how long an incident takes to resolve.
+With a P-value significantly below 0.05 we can conclude that there is at least some correlation between the time it takes for an incident to be resolved and the number of units responding. However, with an R-squared value of 0.15, only 15% of variation in the call finish time can be explained by the number of units at this incident. This makes sense considering the number of units is likely a function of how severe the incident is, or other factors specific to individual incidents. In other words, there is likely some other variable which predicts both how many units are responding and how long an incident takes to resolve.
 
 ```{r}
 smaller_data <- filter(fire_department, Call.Type.Group == "Fire")
@@ -312,14 +315,6 @@ cor.test(smaller_data$timetaken, smaller_data$Number.of.Alarms, method="spearman
 
 cor.test(smaller_data$arrivalTime, smaller_data$Number.of.Alarms, method="spearman")
 ```
-
-```{r}
-fire_department %>%
-  filter(Call.Type.Group == "Fire") %>%
-  select(timetaken, Number.of.Alarms) %>%
-  cor(method="spearman")
-```
-
 In the above tests we can see that the time taken for individual units to become available is very lightly correlated with the number of alarms at a fire incident. The same can be said for the arrival time. Note that we used Spearman's correlation due to the presence of outliers in our data.
 
 ```{r}
@@ -328,7 +323,6 @@ non_emerg <- filter(fire_department, Priority == 2)
 
 t.test(emerg$timetaken, non_emerg$timetaken)
 ```
-
 In the above tests we can see that the mean time taken between emergency and non-emergency incidents for individual units is in fact different. Looking at the confidence interval (and the values of the means) we can see that the time taken for individual units to become available again in emergency incidents is lower than in non-emergency incidents.
 
 ```{r}
@@ -337,15 +331,16 @@ non_life_threataning <- filter(fire_department, Call.Type.Group == "Non Life-thr
 
 t.test(life_threataning$timetaken, non_life_threataning$timetaken)
 ```
-
 In the above tests we can see that the mean time taken for life-threatening events is lower than the mean time taken for non life-threatening events. This would make sense considering the time taken for life threatening events would mean life or death for the people who were in danger.
 
 ### Precipitation correlation analysis
+
 ```{r}
 raining <- filter(fire_department, prcp >1 )
 not_raining <- filter(fire_department, prcp <= 1)
 t.test(raining$timetaken, not_raining$timetaken)
 ```
+
 ```{r}
 cor.test(fire_department$timetaken,fire_department$prcp,method="spearman")
 ```
@@ -357,7 +352,7 @@ summary(myLm)
 
 ```{r}
 
-#fire_data <- filter(fire_department, !grepl("Fire", fire_department$Call.Type))
+fire_data <- filter(fire_department, !grepl("Fire", fire_department$Call.Type))
 fire_data %>%
   mutate(timetaken_limited = case_when(timetaken>30000 ~ 30000,timetaken <= 0 ~ 0, timetaken >= 1000 ~ timetaken)) %>%
   drop_na()%>%
@@ -366,7 +361,6 @@ fire_data %>%
 ```
 
 ```{r}
-
 fire_data <- filter(fire_department, grepl("Medical", fire_department$Call.Type))
 fire_data %>%
   mutate(timetaken_limited = case_when(timetaken>30000 ~ 30000,timetaken <= 0 ~ 0, timetaken >= 1000 ~ timetaken)) %>%
