@@ -7,6 +7,8 @@ output: html_document
 
 # Fire Department Calls for Service in San Francisco
 
+Our work can be found in this repository here: https://github.com/seanjedi/fire_department_sf_research_project
+
 ## Loading our data sets and doing pre-processing
 
 ```{r setup, include=FALSE}
@@ -265,6 +267,7 @@ fire_department %>%
   ggplot(aes(count, Call.Type)) +
   geom_bar(stat = "identity")
 ```
+
 In this plot we can see that after filtering incidents with the Other, Traffic Collision, and Medical Incident types the most common incident types are Citizen Assists and Structure fires.
 
 ```{r}
@@ -275,6 +278,7 @@ fire_department %>%
   ggplot(aes(count, Call.Type.Group)) +
   geom_bar(stat = "identity")
 ```
+
 In the above plot we can see that potentially life threatening incidents are the most common, while there is a very small amount of fire and alarm incidents.
 
 ## Statistical Analysis
@@ -323,7 +327,7 @@ With a P-value significantly below 0.05 we can conclude that there is at least s
 smaller_data <- filter(fire_department, Call.Type.Group == "Fire")
 cor.test(smaller_data$timetaken, smaller_data$Number.of.Alarms, method = "spearman")
 ```
-In the above tests we can see that the time taken for individual units to become available is very lightly correlated with the number of alarms at a fire incident. The same can be said for the arrival time. Note that we used Spearman's correlation due to the presence of outliers in our data.
+In the above tests we can see that the time taken for individual units to become available is very lightly correlated with the number of alarms at a fire incident. Note that we used Spearman's correlation due to the presence of outliers in our data.
 
 ```{r}
 emerg <- filter(fire_department, Priority == 3)
@@ -377,6 +381,7 @@ fire_data %>%
   geom_point() +
   geom_smooth(method = "lm")
 ```
+
 With the statistical analysis above, we had found that precipitation and the time taken before a unit is avaialbe again has a very low p-value in both correlation and with t-testing, which would indicate to us that the time taken increases with precipitation, however when looking at the graphs and the given r-squared value, even if there is a light correlation between these two, we can see that there is more that needs to be considered, and that precipitation is a very small factor in determining how long a unit will take at the scene of an incident.
 
 ### Precipitation correlation analysis
@@ -396,7 +401,7 @@ summary(myLm)
 ```
 
 ```{r}
-# fire_data <- filter(fire_department, !grepl("Fire", fire_department$Call.Type))
+fire_data <- filter(fire_department, !grepl("Fire", fire_department$Call.Type))
 fire_data %>%
   mutate(arrivalTime_limited = case_when(arrivalTime > 30000 ~ 30000, arrivalTime <= 0 ~ 0, arrivalTime >= 1000 ~ arrivalTime)) %>%
   drop_na() %>%
@@ -414,4 +419,5 @@ fire_data %>%
   geom_point() +
   geom_smooth(method = "lm")
 ```
+
 With the statistical analysis we have with the precipitation and arrival time, which is the amount of time that it takes a unit to arrive at a scene, we can determine that our hypothesis is incorrect, since the P-Value and the confidence interval ranges between 0. 
