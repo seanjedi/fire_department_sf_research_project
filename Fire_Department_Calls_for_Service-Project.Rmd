@@ -359,7 +359,7 @@ summary(myLm)
 ```
 
 ```{r}
-# fire_data <- filter(fire_department, !grepl("Fire", fire_department$Call.Type))
+fire_data <- filter(fire_department, !grepl("Fire", fire_department$Call.Type))
 fire_data %>%
   mutate(timetaken_limited = case_when(timetaken > 30000 ~ 30000, timetaken <= 0 ~ 0, timetaken >= 1000 ~ timetaken)) %>%
   drop_na() %>%
