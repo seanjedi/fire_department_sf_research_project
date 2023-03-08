@@ -11,7 +11,11 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+require("tidyverse")
 #install.packages('tidyverse', dependencies = TRUE)
+```
+
+```{r}
 ## Script to get the dataset if we want the newest data
 ## Warning, this could take a very long time, possibly longer than 30 mins
 # install.packages("RSocrata")
@@ -20,8 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #  "https://data.sfgov.org/resource/nuek-vuh3.json",
 #)
 # write_csv(fire_department, "Fire_Department_Calls_for_Service.csv")
-
-require("tidyverse")
+# You can get the CSV for the weather data for San Francisco using this link here: https://bulk.meteostat.net/v2/daily/72494.csv.gz
 weatherData <- read_csv("72494.csv")
 firefighter <- read_csv("Fire_Department_Calls_for_Service.csv")
 ```
@@ -51,7 +54,35 @@ rm(firefighter)
 gc()
 ```
 
+Need to fill in new weather data missing data with either 0 or na, so that we can anlyze it later
+```{r}
+fire_department <- fire_department %>% 
+    mutate_if(is.numeric, ~replace_na(., 0))
+fire_department[is.na(fire_department)] <- ""
+```
+
+Adding more fields for time data analysis
+```{r}
+fire_department <- mutate(fire_department, timetaken = as.numeric(as.POSIXct(Available.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Response.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
+
+fire_department <- mutate(fire_department, arrivalTime = as.numeric(as.POSIXct(On.Scene.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Received.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
+
+fire_department <- mutate(fire_department, hospitalTimeToArrive = as.numeric(as.POSIXct(Hospital.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Received.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
+
+fire_department <- mutate(fire_department, transportTime = as.numeric(as.POSIXct(Hospital.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Transport.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
+
+fire_department <- mutate(fire_department, responseTime = as.numeric(as.POSIXct(Response.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Received.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
+
+fire_department <- mutate(fire_department, StationArea = as.numeric(Station.Area))
+fire_department <- mutate(fire_department, Box = as.numeric(Box))
+```
+
+
 # Analysis of data within Fire Department dataset
+
+```{r}
+str(fire_department)
+```
 
 ```{r}
 summary(fire_department)
@@ -65,6 +96,16 @@ summary(fire_department)
 | Number of Alarms               | Number of alarms associated with the incident. This is a number between 1 and 5                  | Numeric   |
 | Unit sequence in call dispatch | A number that indicates the order this unit was assigned to this call                            | Numeric   |
 | Analysis.Neighborhoods         | The neighborhood numeric value where the call originated                                         | Numeric   |
+| tavg                           | The average air temperature in °C                                                                | Numeric  |
+| tmin                           | The minimum air temperature in °C                                                                | Numeric  |
+| tmax                           | The maximum air temperature in °C                                                                | Numeric  |
+| prcp                           | The daily precipitation total in mm	Float                                                       | Numeric  |
+| snow                           | The maximum snow depth in mm	Integer                                                             | Numeric  |
+| wdir                           | The average wind direction in degrees (°)                                                        | Numeric  |
+| wssp                           | The average wind speed in km/h                                                                   | Numeric  |
+| wpgt                           | The peak wind gust in km/h                                                                       | Numeric  |
+| pres                           | The average sea-level air pressure in hPa	Float                                                 | Numeric  |
+| tsun                           | The daily sunshine total in minutes (m)	Integer                                                 | Numeric  |
 
 > Text Variables
 
@@ -148,27 +189,12 @@ summary(fire_department)
 
 | Name                 | Description                                                                                                                                                     | Related Variables              |
 |------------------------|------------------------|------------------------|
-| timeTaken            | The difference between the time that the unit is on scene, and the time that the unit acknowledges the dispatch                                                 | Available.DtTm - Response.DtTm |
-| arrivalTime          | The difference between the time that the unit is no longer assigned to a call, and the time that the unit received the dispatch from the 911 center             | On.Scene.DtTm - Received.DtTm  |
+| arrivalTime            | The difference between the time that the unit is on scene, and the time that the unit acknowledges the dispatch                                                 | Available.DtTm - Response.DtTm |
+| timeTaken          | The difference between the time that the unit is no longer assigned to a call, and the time that the unit received the dispatch from the 911 center             | On.Scene.DtTm - Received.DtTm  |
 | hospitalTimeToArrive | If the unit is an ambulance, this is the difference between the time that the unit receives a call and the time the unit arrives to the hospital                | Hospital DtTm - Received.DtTm  |
 | transportTime        | If the unit is an ambulance, this is the difference between the time that the unit starts transport to a hospital and the time the unit arrives to the hospital | Hospital DtTm - Transport DtTm |
 | StationArea          | Changed the character string of the station areas to a numeric value                                                                                            | as.numeric(Station.Area)       |
 | Box                  | Changed the character string of the station box area to a numeric value                                                                                         | as.numeric(Box)                |
-
-```{r}
-fire_department <- mutate(fire_department, timetaken = as.numeric(as.POSIXct(Available.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Response.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
-
-fire_department <- mutate(fire_department, arrivalTime = as.numeric(as.POSIXct(On.Scene.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Received.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
-
-fire_department <- mutate(fire_department, hospitalTimeToArrive = as.numeric(as.POSIXct(Hospital.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Received.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
-
-fire_department <- mutate(fire_department, transportTime = as.numeric(as.POSIXct(Hospital.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Transport.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
-
-fire_department <- mutate(fire_department, responseTime = as.numeric(as.POSIXct(Response.DtTm, format = "%m/%d/%Y %I:%M:%S %p") - as.POSIXct(Received.DtTm, format = "%m/%d/%Y %I:%M:%S %p")))
-
-fire_department <- mutate(fire_department, StationArea = as.numeric(Station.Area))
-fire_department <- mutate(fire_department, Box = as.numeric(Box))
-```
 
 ## Exploratory Data Analysis
 
@@ -242,20 +268,21 @@ fire_department %>%
 ## Statistical Analysis
 
 ```{r}
+fire_department <- drop_na(fire_department)
 fire_department %>%
-  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime") %>%
+  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres") %>%
   cor()
 ```
 
 ```{r}
-fire_department %>%
-  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime") %>%
-  pairs()
+# fire_department %>%
+#  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", #"timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime") %>%
+#  pairs()
 ```
 
 ```{r}
 fire_department %>%
-  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime") %>%
+  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres") %>%
   cor(method="spearman")
 ```
 
@@ -286,6 +313,13 @@ cor.test(smaller_data$timetaken, smaller_data$Number.of.Alarms, method="spearman
 cor.test(smaller_data$arrivalTime, smaller_data$Number.of.Alarms, method="spearman")
 ```
 
+```{r}
+fire_department %>%
+  filter(Call.Type.Group == "Fire") %>%
+  select(timetaken, Number.of.Alarms) %>%
+  cor(method="spearman")
+```
+
 In the above tests we can see that the time taken for individual units to become available is very lightly correlated with the number of alarms at a fire incident. The same can be said for the arrival time. Note that we used Spearman's correlation due to the presence of outliers in our data.
 
 ```{r}
@@ -305,3 +339,38 @@ t.test(life_threataning$timetaken, non_life_threataning$timetaken)
 ```
 
 In the above tests we can see that the mean time taken for life-threatening events is lower than the mean time taken for non life-threatening events. This would make sense considering the time taken for life threatening events would mean life or death for the people who were in danger.
+
+### Precipitation correlation analysis
+```{r}
+raining <- filter(fire_department, prcp >1 )
+not_raining <- filter(fire_department, prcp <= 1)
+t.test(raining$timetaken, not_raining$timetaken)
+```
+```{r}
+cor.test(fire_department$timetaken,fire_department$prcp,method="spearman")
+```
+
+```{r}
+myLm <- lm(fire_department$prcp ~ fire_department$timetaken)
+summary(myLm)
+```
+
+```{r}
+
+#fire_data <- filter(fire_department, !grepl("Fire", fire_department$Call.Type))
+fire_data %>%
+  mutate(timetaken_limited = case_when(timetaken>30000 ~ 30000,timetaken <= 0 ~ 0, timetaken >= 1000 ~ timetaken)) %>%
+  drop_na()%>%
+  ggplot(aes(prcp, timetaken_limited, color=Call.Type)) + geom_point() +geom_smooth(method="lm")
+
+```
+
+```{r}
+
+fire_data <- filter(fire_department, grepl("Medical", fire_department$Call.Type))
+fire_data %>%
+  mutate(timetaken_limited = case_when(timetaken>30000 ~ 30000,timetaken <= 0 ~ 0, timetaken >= 1000 ~ timetaken)) %>%
+  drop_na()%>%
+  ggplot(aes(prcp, timetaken_limited, color=Call.Type)) + geom_point() +geom_smooth(method="lm")
+
+```
