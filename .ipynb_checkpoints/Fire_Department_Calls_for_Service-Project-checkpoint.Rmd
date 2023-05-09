@@ -14,7 +14,12 @@ Our work can be found in this repository here: https://github.com/seanjedi/fire_
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require("tidyverse")
+library(lubridate)
 # install.packages('tidyverse', dependencies = TRUE)
+
+# install.packages("psych")
+library(psych)
+
 ```
 
 ```{r}
@@ -79,6 +84,14 @@ fire_department <- mutate(fire_department, responseTime = as.numeric(as.POSIXct(
 
 fire_department <- mutate(fire_department, StationArea = as.numeric(Station.Area))
 fire_department <- mutate(fire_department, Box = as.numeric(Box))
+
+fire_department$receivedHour <- as.POSIXct(fire_department$Received.DtTm, format = "%m/%d/%Y %H:%M:%S")
+fire_department$receivedHour = strtoi(format(fire_department$receivedHour, format = "%H"))
+
+fire_department <- fire_department %>% mutate(IncidentDay = mdy_hms(Received.DtTm))
+fire_department$IncidentDay <- wday(fire_department$IncidentDay)
+fire_department$IncidentDayStr <- wday(fire_department$IncidentDay, label=TRUE)
+
 ```
 
 # Analysis of data within Fire Department dataset
@@ -281,12 +294,50 @@ fire_department %>%
 
 In the above plot we can see that potentially life threatening incidents are the most common, while there is a very small amount of fire and alarm incidents.
 
+```{r}
+fire_department %>%
+  filter(Call.Type != "Medical Incident" & Call.Type != "Other" & Call.Type != "Traffic Collision"  & Call.Type != "Hazmat"  & Call.Type != "High Angle Rescue") %>%
+  group_by(IncidentDayStr, Call.Type) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(IncidentDayStr, count, color=Call.Type)) +
+  geom_point() +
+  labs(x = "Day", y = "Number of Inicdents")
+```
+
+```{r}
+fire_department %>%
+  filter(Call.Type == "Structure Fire" ) %>%
+  group_by(IncidentDayStr, Call.Type) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(IncidentDayStr, count, color=Call.Type)) +
+  geom_point() +
+  labs(x = "Day", y = "Number of Inicdents")
+```
+```{r}
+fire_department %>%
+  group_by(IncidentDayStr, Call.Type.Group) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(IncidentDayStr, count, color=Call.Type.Group)) +
+  geom_point() +
+  labs(x = "Day", y = "Number of Inicdents")
+```
+
+```{r}
+fire_department %>%
+  # filter(Call.Type != "Medical Incident" & Call.Type != "Traffic Collision" & Call.Type != "Other") %>%
+  group_by(receivedHour, Call.Type.Group) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(receivedHour,count, color = Call.Type.Group)) +
+  geom_point() +
+  labs(x = "Hour", y = "Number incidents")
+```
+
 ## Statistical Analysis
 
 ```{r}
 fire_department <- drop_na(fire_department)
 fire_department %>%
-  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres") %>%
+  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres", "IncidentDay", "receivedHour") %>%
   cor()
 ```
 
@@ -298,7 +349,67 @@ fire_department %>%
 
 ```{r}
 fire_department %>%
-  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres") %>%
+  select("Number.of.Alarms", "responseTime", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres", "IncidentDay", "receivedHour") %>%
+  pairs.panels(
+             smooth = TRUE,      # If TRUE, draws loess smooths
+             scale = FALSE,      # If TRUE, scales the correlation text font
+             density = TRUE,     # If TRUE, adds density plots and histograms
+             ellipses = TRUE,    # If TRUE, draws ellipses
+             method = "pearson", # Correlation method (also "spearman" or "kendall")
+             pch = 21,           # pch symbol
+             lm = FALSE,         # If TRUE, plots linear fit rather than the LOESS (smoothed) fit
+             cor = TRUE,         # If TRUE, reports correlations
+             jiggle = FALSE,     # If TRUE, data points are jittered
+             factor = 2,         # Jittering factor
+             hist.col = 4,       # Histograms color
+             stars = TRUE,       # If TRUE, adds significance level with stars
+             ci = TRUE)          # If TRUE, adds confidence intervals
+
+```
+
+```{r}
+fire_department %>%
+  select("Number.of.Alarms", "responseTime", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres", "IncidentDay", "receivedHour") %>%
+  pairs.panels(
+             smooth = TRUE,      # If TRUE, draws loess smooths
+             scale = FALSE,      # If TRUE, scales the correlation text font
+             density = TRUE,     # If TRUE, adds density plots and histograms
+             ellipses = TRUE,    # If TRUE, draws ellipses
+             method = "spearman", # Correlation method (also "spearman" or "kendall")
+             pch = 21,           # pch symbol
+             lm = FALSE,         # If TRUE, plots linear fit rather than the LOESS (smoothed) fit
+             cor = TRUE,         # If TRUE, reports correlations
+             jiggle = FALSE,     # If TRUE, data points are jittered
+             factor = 2,         # Jittering factor
+             hist.col = 4,       # Histograms color
+             stars = TRUE,       # If TRUE, adds significance level with stars
+             ci = TRUE)          # If TRUE, adds confidence intervals
+
+```
+
+```{r}
+fire_department %>%
+  select("Number.of.Alarms", "responseTime", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres", "IncidentDay", "receivedHour") %>%
+  pairs.panels(
+             smooth = TRUE,      # If TRUE, draws loess smooths
+             scale = FALSE,      # If TRUE, scales the correlation text font
+             density = TRUE,     # If TRUE, adds density plots and histograms
+             ellipses = TRUE,    # If TRUE, draws ellipses
+             method = "kendall", # Correlation method (also "spearman" or "kendall")
+             pch = 21,           # pch symbol
+             lm = FALSE,         # If TRUE, plots linear fit rather than the LOESS (smoothed) fit
+             cor = TRUE,         # If TRUE, reports correlations
+             jiggle = FALSE,     # If TRUE, data points are jittered
+             factor = 2,         # Jittering factor
+             hist.col = 4,       # Histograms color
+             stars = TRUE,       # If TRUE, adds significance level with stars
+             ci = TRUE)          # If TRUE, adds confidence intervals
+
+```
+
+```{r}
+fire_department %>%
+  select("Number.of.Alarms", "responseTime", "StationArea", "Zipcode.of.Incident", "Unit.sequence.in.call.dispatch", "timetaken", "arrivalTime", "hospitalTimeToArrive", "transportTime", "tavg", "tmin", "tmax", "prcp", "wdir", "wssp", "pres", "IncidentDay", "receivedHour") %>%
   cor(method = "spearman")
 ```
 
@@ -421,3 +532,13 @@ fire_data %>%
 ```
 
 With the statistical analysis we have with the precipitation and arrival time, which is the amount of time that it takes a unit to arrive at a scene, we can determine that our hypothesis is incorrect, since the P-Value and the confidence interval ranges between 0. 
+
+```{r}
+fire_data <- filter(fire_department, grepl("Fire", fire_department$Call.Type))
+fire_data %>%
+  mutate(arrivalTime_limited = case_when(arrivalTime > 30000 ~ 30000, arrivalTime <= 0 ~ 0, arrivalTime >= 1000 ~ arrivalTime)) %>%
+  drop_na() %>%
+  ggplot(aes(prcp, arrivalTime_limited, color = Call.Type)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```

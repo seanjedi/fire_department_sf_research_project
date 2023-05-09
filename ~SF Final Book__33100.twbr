@@ -1,0 +1,1789 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20231.23.0310.1044                               -->
+<workbook original-version='18.1' source-build='2023.1.0 (20231.23.0310.1044)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MapboxVectorStylesAndLayers />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='Fire_Department_Calls_for_Service_final' inline='true' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Fire_Department_Calls_for_Service_final' name='textscan.06k8r0d0aoytdz17qx58b1lq5zef'>
+            <connection class='textscan' directory='C:/Users/Sean4/Documents/comp-293A/fire_department_sf_research_project' filename='Fire_Department_Calls_for_Service_final.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.06k8r0d0aoytdz17qx58b1lq5zef' name='Fire_Department_Calls_for_Service_final.csv' table='[Fire_Department_Calls_for_Service_final#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='Call Number' ordinal='0' />
+            <column datatype='string' name='Unit ID' ordinal='1' />
+            <column datatype='integer' name='Incident Number' ordinal='2' />
+            <column datatype='string' name='Call Type' ordinal='3' />
+            <column datatype='date' name='Call Date' ordinal='4' />
+            <column datatype='date' name='Watch Date' ordinal='5' />
+            <column datatype='datetime' name='Received DtTm' ordinal='6' />
+            <column datatype='datetime' name='Entry DtTm' ordinal='7' />
+            <column datatype='datetime' name='Dispatch DtTm' ordinal='8' />
+            <column datatype='datetime' name='Response DtTm' ordinal='9' />
+            <column datatype='datetime' name='On Scene DtTm' ordinal='10' />
+            <column datatype='datetime' name='Transport DtTm' ordinal='11' />
+            <column datatype='datetime' name='Hospital DtTm' ordinal='12' />
+            <column datatype='string' name='Call Final Disposition' ordinal='13' />
+            <column datatype='datetime' name='Available DtTm' ordinal='14' />
+            <column datatype='string' name='Address' ordinal='15' />
+            <column datatype='string' name='City' ordinal='16' />
+            <column datatype='real' name='Zipcode of Incident' ordinal='17' />
+            <column datatype='string' name='Battalion' ordinal='18' />
+            <column datatype='string' name='Station Area' ordinal='19' />
+            <column datatype='real' name='Box' ordinal='20' />
+            <column datatype='string' name='Original Priority' ordinal='21' />
+            <column datatype='integer' name='Priority' ordinal='22' />
+            <column datatype='integer' name='Final Priority' ordinal='23' />
+            <column datatype='boolean' name='ALS Unit' ordinal='24' />
+            <column datatype='string' name='Call Type Group' ordinal='25' />
+            <column datatype='integer' name='Number of Alarms' ordinal='26' />
+            <column datatype='string' name='Unit Type' ordinal='27' />
+            <column datatype='real' name='Unit sequence in call dispatch' ordinal='28' />
+            <column datatype='real' name='Fire Prevention District' ordinal='29' />
+            <column datatype='integer' name='Supervisor District' ordinal='30' />
+            <column datatype='string' name='Neighborhooods - Analysis Boundaries' ordinal='31' />
+            <column datatype='string' name='RowID' ordinal='32' />
+            <column datatype='string' name='case_location' ordinal='33' />
+            <column datatype='real' name='Analysis Neighborhoods' ordinal='34' />
+            <column datatype='date' name='date' ordinal='35' />
+            <column datatype='real' name='tavg' ordinal='36' />
+            <column datatype='real' name='tmin' ordinal='37' />
+            <column datatype='real' name='tmax' ordinal='38' />
+            <column datatype='real' name='prcp' ordinal='39' />
+            <column datatype='real' name='snow' ordinal='40' />
+            <column datatype='real' name='wdir' ordinal='41' />
+            <column datatype='real' name='wssp' ordinal='42' />
+            <column datatype='real' name='wpgt' ordinal='43' />
+            <column datatype='real' name='pres' ordinal='44' />
+            <column datatype='real' name='tsun' ordinal='45' />
+            <column datatype='real' name='timetaken' ordinal='46' />
+            <column datatype='real' name='arrivalTime' ordinal='47' />
+            <column datatype='real' name='hospitalTimeToArrive' ordinal='48' />
+            <column datatype='real' name='transportTime' ordinal='49' />
+            <column datatype='real' name='responseTime' ordinal='50' />
+            <column datatype='integer' name='IncidentDay' ordinal='51' />
+            <column datatype='string' name='IncidentDayStr' ordinal='52' />
+            <column datatype='integer' name='Neighborhoood Encoded' ordinal='53' />
+            <column datatype='integer' name='Call Type Encoded' ordinal='54' />
+            <column datatype='integer' name='Call Final Encoded' ordinal='55' />
+            <column datatype='real' name='longitude' ordinal='56' />
+            <column datatype='real' name='latitude' ordinal='57' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.06k8r0d0aoytdz17qx58b1lq5zef' name='Fire_Department_Calls_for_Service_final.csv' table='[Fire_Department_Calls_for_Service_final#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='Call Number' ordinal='0' />
+            <column datatype='string' name='Unit ID' ordinal='1' />
+            <column datatype='integer' name='Incident Number' ordinal='2' />
+            <column datatype='string' name='Call Type' ordinal='3' />
+            <column datatype='date' name='Call Date' ordinal='4' />
+            <column datatype='date' name='Watch Date' ordinal='5' />
+            <column datatype='datetime' name='Received DtTm' ordinal='6' />
+            <column datatype='datetime' name='Entry DtTm' ordinal='7' />
+            <column datatype='datetime' name='Dispatch DtTm' ordinal='8' />
+            <column datatype='datetime' name='Response DtTm' ordinal='9' />
+            <column datatype='datetime' name='On Scene DtTm' ordinal='10' />
+            <column datatype='datetime' name='Transport DtTm' ordinal='11' />
+            <column datatype='datetime' name='Hospital DtTm' ordinal='12' />
+            <column datatype='string' name='Call Final Disposition' ordinal='13' />
+            <column datatype='datetime' name='Available DtTm' ordinal='14' />
+            <column datatype='string' name='Address' ordinal='15' />
+            <column datatype='string' name='City' ordinal='16' />
+            <column datatype='real' name='Zipcode of Incident' ordinal='17' />
+            <column datatype='string' name='Battalion' ordinal='18' />
+            <column datatype='string' name='Station Area' ordinal='19' />
+            <column datatype='real' name='Box' ordinal='20' />
+            <column datatype='string' name='Original Priority' ordinal='21' />
+            <column datatype='integer' name='Priority' ordinal='22' />
+            <column datatype='integer' name='Final Priority' ordinal='23' />
+            <column datatype='boolean' name='ALS Unit' ordinal='24' />
+            <column datatype='string' name='Call Type Group' ordinal='25' />
+            <column datatype='integer' name='Number of Alarms' ordinal='26' />
+            <column datatype='string' name='Unit Type' ordinal='27' />
+            <column datatype='real' name='Unit sequence in call dispatch' ordinal='28' />
+            <column datatype='real' name='Fire Prevention District' ordinal='29' />
+            <column datatype='integer' name='Supervisor District' ordinal='30' />
+            <column datatype='string' name='Neighborhooods - Analysis Boundaries' ordinal='31' />
+            <column datatype='string' name='RowID' ordinal='32' />
+            <column datatype='string' name='case_location' ordinal='33' />
+            <column datatype='real' name='Analysis Neighborhoods' ordinal='34' />
+            <column datatype='date' name='date' ordinal='35' />
+            <column datatype='real' name='tavg' ordinal='36' />
+            <column datatype='real' name='tmin' ordinal='37' />
+            <column datatype='real' name='tmax' ordinal='38' />
+            <column datatype='real' name='prcp' ordinal='39' />
+            <column datatype='real' name='snow' ordinal='40' />
+            <column datatype='real' name='wdir' ordinal='41' />
+            <column datatype='real' name='wssp' ordinal='42' />
+            <column datatype='real' name='wpgt' ordinal='43' />
+            <column datatype='real' name='pres' ordinal='44' />
+            <column datatype='real' name='tsun' ordinal='45' />
+            <column datatype='real' name='timetaken' ordinal='46' />
+            <column datatype='real' name='arrivalTime' ordinal='47' />
+            <column datatype='real' name='hospitalTimeToArrive' ordinal='48' />
+            <column datatype='real' name='transportTime' ordinal='49' />
+            <column datatype='real' name='responseTime' ordinal='50' />
+            <column datatype='integer' name='IncidentDay' ordinal='51' />
+            <column datatype='string' name='IncidentDayStr' ordinal='52' />
+            <column datatype='integer' name='Neighborhoood Encoded' ordinal='53' />
+            <column datatype='integer' name='Call Type Encoded' ordinal='54' />
+            <column datatype='integer' name='Call Final Encoded' ordinal='55' />
+            <column datatype='real' name='longitude' ordinal='56' />
+            <column datatype='real' name='latitude' ordinal='57' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Call Number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Call Number]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Call Number</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unit ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Unit ID]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Unit ID</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Incident Number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Incident Number]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Incident Number</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Call Type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Call Type]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Call Type</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Call Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Call Date]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Call Date</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Watch Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Watch Date]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Watch Date</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Received DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Received DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Received DtTm</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Entry DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Entry DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Entry DtTm</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Dispatch DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Dispatch DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Dispatch DtTm</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Response DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Response DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Response DtTm</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>On Scene DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[On Scene DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>On Scene DtTm</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Transport DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Transport DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Transport DtTm</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Hospital DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Hospital DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Hospital DtTm</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Call Final Disposition</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Call Final Disposition]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Call Final Disposition</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Available DtTm</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Available DtTm]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Available DtTm</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Address</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Address]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Address</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>City</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[City]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>City</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Zipcode of Incident</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Zipcode of Incident]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Zipcode of Incident</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Battalion</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Battalion]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Battalion</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Station Area</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Station Area]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Station Area</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Box</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Box]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Box</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Original Priority</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Original Priority]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Original Priority</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Priority</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Priority]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Priority</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Final Priority</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Final Priority]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Final Priority</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ALS Unit</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[ALS Unit]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>ALS Unit</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Call Type Group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Call Type Group]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Call Type Group</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Number of Alarms</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Number of Alarms]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Number of Alarms</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unit Type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Unit Type]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Unit Type</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unit sequence in call dispatch</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Unit sequence in call dispatch]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Unit sequence in call dispatch</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fire Prevention District</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Fire Prevention District]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Fire Prevention District</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Supervisor District</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Supervisor District]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Supervisor District</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Neighborhooods - Analysis Boundaries</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Neighborhooods - Analysis Boundaries]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Neighborhooods - Analysis Boundaries</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>RowID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[RowID]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>RowID</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>case_location</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[case_location]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>case_location</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Analysis Neighborhoods</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Analysis Neighborhoods]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Analysis Neighborhoods</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tavg</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[tavg]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>tavg</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tmin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[tmin]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>tmin</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tmax</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[tmax]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>tmax</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>prcp</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[prcp]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>prcp</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>snow</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[snow]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>snow</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>wdir</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[wdir]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>wdir</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>wssp</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[wssp]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>wssp</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>wpgt</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[wpgt]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>wpgt</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pres</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pres]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>pres</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tsun</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[tsun]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>tsun</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>timetaken</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[timetaken]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>timetaken</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>arrivalTime</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[arrivalTime]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>arrivalTime</remote-alias>
+            <ordinal>47</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hospitalTimeToArrive</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[hospitalTimeToArrive]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>hospitalTimeToArrive</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>transportTime</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[transportTime]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>transportTime</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>responseTime</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[responseTime]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>responseTime</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IncidentDay</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[IncidentDay]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>IncidentDay</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IncidentDayStr</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[IncidentDayStr]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>IncidentDayStr</remote-alias>
+            <ordinal>52</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Neighborhoood Encoded</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Neighborhoood Encoded]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Neighborhoood Encoded</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Call Type Encoded</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Call Type Encoded]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Call Type Encoded</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Call Final Encoded</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Call Final Encoded]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>Call Final Encoded</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>longitude</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[longitude]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>longitude</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>latitude</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[latitude]</local-name>
+            <parent-name>[Fire_Department_Calls_for_Service_final.csv]</parent-name>
+            <remote-alias>latitude</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Call Number]' role='dimension' type='ordinal' />
+      <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column datatype='integer' name='[Incident Number]' role='dimension' type='ordinal' />
+      <column caption='Incident Day Str' datatype='string' name='[IncidentDayStr]' role='dimension' type='nominal' />
+      <column caption='Incident Day' datatype='integer' name='[IncidentDay]' role='dimension' type='quantitative' />
+      <column datatype='string' name='[Neighborhooods - Analysis Boundaries]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column datatype='integer' name='[Number of Alarms]' role='measure' type='quantitative' />
+      <column caption='Row ID' datatype='string' name='[RowID]' role='dimension' type='nominal' />
+      <column aggregation='Sum' datatype='real' default-format='*00000' name='[Zipcode of Incident]' role='dimension' semantic-role='[ZipCode].[Name]' type='ordinal' />
+      <_.fcp.ObjectModelTableType.true...column caption='Fire_Department_Calls_for_Service_final.csv' datatype='table' name='[__tableau_internal_object_id__].[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]' role='measure' type='quantitative' />
+      <column caption='Arrival Time' datatype='real' name='[arrivalTime]' role='measure' type='quantitative' />
+      <column caption='Case Location' datatype='string' name='[case_location]' role='dimension' type='nominal' />
+      <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Hospital Time To Arrive' datatype='real' name='[hospitalTimeToArrive]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='Latitude' datatype='real' name='[latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' caption='Longitude' datatype='real' name='[longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column caption='Prcp' datatype='real' name='[prcp]' role='measure' type='quantitative' />
+      <column caption='Pres' datatype='real' name='[pres]' role='measure' type='quantitative' />
+      <column caption='Response Time' datatype='real' name='[responseTime]' role='measure' type='quantitative' />
+      <column caption='Snow' datatype='real' name='[snow]' role='measure' type='quantitative' />
+      <column caption='Tavg' datatype='real' name='[tavg]' role='measure' type='quantitative' />
+      <column caption='Timetaken' datatype='real' name='[timetaken]' role='measure' type='quantitative' />
+      <column caption='Tmax' datatype='real' name='[tmax]' role='measure' type='quantitative' />
+      <column caption='Tmin' datatype='real' name='[tmin]' role='measure' type='quantitative' />
+      <column caption='Transport Time' datatype='real' name='[transportTime]' role='measure' type='quantitative' />
+      <column caption='Tsun' datatype='real' name='[tsun]' role='measure' type='quantitative' />
+      <column caption='Wdir' datatype='real' name='[wdir]' role='measure' type='quantitative' />
+      <column caption='Wpgt' datatype='real' name='[wpgt]' role='measure' type='quantitative' />
+      <column caption='Wssp' datatype='real' name='[wssp]' role='measure' type='quantitative' />
+      <column-instance column='[Number of Alarms]' derivation='None' name='[none:Number of Alarms:ok]' pivot='key' type='ordinal' />
+      <drill-paths>
+        <drill-path name='Neighborhooods - Analysis Boundaries, City'>
+          <field>[Neighborhooods - Analysis Boundaries]</field>
+          <field>[Zipcode of Incident]</field>
+        </drill-path>
+      </drill-paths>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='shape' field='[none:Number of Alarms:ok]' type='shape'>
+            <map to='asterisk'>
+              <bucket>5</bucket>
+            </map>
+            <map to='circle'>
+              <bucket>1</bucket>
+            </map>
+            <map to='diamond'>
+              <bucket>6</bucket>
+            </map>
+            <map to='down-triangle'>
+              <bucket>8</bucket>
+            </map>
+            <map to='left-triangle'>
+              <bucket>9</bucket>
+            </map>
+            <map to='plus'>
+              <bucket>3</bucket>
+            </map>
+            <map to='square'>
+              <bucket>2</bucket>
+            </map>
+            <map to='times'>
+              <bucket>4</bucket>
+            </map>
+            <map to='triangle'>
+              <bucket>7</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Fire_Department_Calls_for_Service_final.csv' id='Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E'>
+            <properties context=''>
+              <relation connection='textscan.06k8r0d0aoytdz17qx58b1lq5zef' name='Fire_Department_Calls_for_Service_final.csv' table='[Fire_Department_Calls_for_Service_final#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='Call Number' ordinal='0' />
+                  <column datatype='string' name='Unit ID' ordinal='1' />
+                  <column datatype='integer' name='Incident Number' ordinal='2' />
+                  <column datatype='string' name='Call Type' ordinal='3' />
+                  <column datatype='date' name='Call Date' ordinal='4' />
+                  <column datatype='date' name='Watch Date' ordinal='5' />
+                  <column datatype='datetime' name='Received DtTm' ordinal='6' />
+                  <column datatype='datetime' name='Entry DtTm' ordinal='7' />
+                  <column datatype='datetime' name='Dispatch DtTm' ordinal='8' />
+                  <column datatype='datetime' name='Response DtTm' ordinal='9' />
+                  <column datatype='datetime' name='On Scene DtTm' ordinal='10' />
+                  <column datatype='datetime' name='Transport DtTm' ordinal='11' />
+                  <column datatype='datetime' name='Hospital DtTm' ordinal='12' />
+                  <column datatype='string' name='Call Final Disposition' ordinal='13' />
+                  <column datatype='datetime' name='Available DtTm' ordinal='14' />
+                  <column datatype='string' name='Address' ordinal='15' />
+                  <column datatype='string' name='City' ordinal='16' />
+                  <column datatype='real' name='Zipcode of Incident' ordinal='17' />
+                  <column datatype='string' name='Battalion' ordinal='18' />
+                  <column datatype='string' name='Station Area' ordinal='19' />
+                  <column datatype='real' name='Box' ordinal='20' />
+                  <column datatype='string' name='Original Priority' ordinal='21' />
+                  <column datatype='integer' name='Priority' ordinal='22' />
+                  <column datatype='integer' name='Final Priority' ordinal='23' />
+                  <column datatype='boolean' name='ALS Unit' ordinal='24' />
+                  <column datatype='string' name='Call Type Group' ordinal='25' />
+                  <column datatype='integer' name='Number of Alarms' ordinal='26' />
+                  <column datatype='string' name='Unit Type' ordinal='27' />
+                  <column datatype='real' name='Unit sequence in call dispatch' ordinal='28' />
+                  <column datatype='real' name='Fire Prevention District' ordinal='29' />
+                  <column datatype='integer' name='Supervisor District' ordinal='30' />
+                  <column datatype='string' name='Neighborhooods - Analysis Boundaries' ordinal='31' />
+                  <column datatype='string' name='RowID' ordinal='32' />
+                  <column datatype='string' name='case_location' ordinal='33' />
+                  <column datatype='real' name='Analysis Neighborhoods' ordinal='34' />
+                  <column datatype='date' name='date' ordinal='35' />
+                  <column datatype='real' name='tavg' ordinal='36' />
+                  <column datatype='real' name='tmin' ordinal='37' />
+                  <column datatype='real' name='tmax' ordinal='38' />
+                  <column datatype='real' name='prcp' ordinal='39' />
+                  <column datatype='real' name='snow' ordinal='40' />
+                  <column datatype='real' name='wdir' ordinal='41' />
+                  <column datatype='real' name='wssp' ordinal='42' />
+                  <column datatype='real' name='wpgt' ordinal='43' />
+                  <column datatype='real' name='pres' ordinal='44' />
+                  <column datatype='real' name='tsun' ordinal='45' />
+                  <column datatype='real' name='timetaken' ordinal='46' />
+                  <column datatype='real' name='arrivalTime' ordinal='47' />
+                  <column datatype='real' name='hospitalTimeToArrive' ordinal='48' />
+                  <column datatype='real' name='transportTime' ordinal='49' />
+                  <column datatype='real' name='responseTime' ordinal='50' />
+                  <column datatype='integer' name='IncidentDay' ordinal='51' />
+                  <column datatype='string' name='IncidentDayStr' ordinal='52' />
+                  <column datatype='integer' name='Neighborhoood Encoded' ordinal='53' />
+                  <column datatype='integer' name='Call Type Encoded' ordinal='54' />
+                  <column datatype='integer' name='Call Final Encoded' ordinal='55' />
+                  <column datatype='real' name='longitude' ordinal='56' />
+                  <column datatype='real' name='latitude' ordinal='57' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource inline='true' name='Clipboard_20230507T183202' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Clipboard_20230507T183202' name='Clipboard_20230507T183202leaf'>
+            <connection class='textscan' directory='C:/Users/Sean4/AppData/Local/Temp/TableauTemp/0w2e4ni1r7vnfr1g3bp8a0erdtya' filename='Clipboard_20230507T183202.txt' temporary='yes' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='Clipboard_20230507T183202leaf' name='Clipboard_20230507T183202#txt' table='[Clipboard_20230507T183202#txt]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator='&#9;'>
+            <column datatype='string' name='City' ordinal='0' />
+            <column datatype='real' name='Latitude' ordinal='1' />
+            <column datatype='real' name='Longitude' ordinal='2' />
+            <column datatype='string' name='Neighborhooods - Analysis Boundaries' ordinal='3' />
+            <column datatype='real' name='Avg. Response Time' ordinal='4' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='Clipboard_20230507T183202leaf' name='Clipboard_20230507T183202#txt' table='[Clipboard_20230507T183202#txt]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator='&#9;'>
+            <column datatype='string' name='City' ordinal='0' />
+            <column datatype='real' name='Latitude' ordinal='1' />
+            <column datatype='real' name='Longitude' ordinal='2' />
+            <column datatype='string' name='Neighborhooods - Analysis Boundaries' ordinal='3' />
+            <column datatype='real' name='Avg. Response Time' ordinal='4' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Clipboard_20230507T183202#txt]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;\\t&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>City</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[City]</local-name>
+            <parent-name>[Clipboard_20230507T183202#txt]</parent-name>
+            <remote-alias>City</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20230507T183202]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Latitude</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Latitude]</local-name>
+            <parent-name>[Clipboard_20230507T183202#txt]</parent-name>
+            <remote-alias>Latitude</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20230507T183202]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Longitude</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Longitude]</local-name>
+            <parent-name>[Clipboard_20230507T183202#txt]</parent-name>
+            <remote-alias>Longitude</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20230507T183202]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Neighborhooods - Analysis Boundaries</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Neighborhooods - Analysis Boundaries]</local-name>
+            <parent-name>[Clipboard_20230507T183202#txt]</parent-name>
+            <remote-alias>Neighborhooods - Analysis Boundaries</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20230507T183202]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Avg. Response Time</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Avg. Response Time]</local-name>
+            <parent-name>[Clipboard_20230507T183202#txt]</parent-name>
+            <remote-alias>Avg. Response Time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20230507T183202]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column aggregation='Avg' datatype='real' name='[Latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[Longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Clipboard_20230507T183202' datatype='table' name='[__tableau_internal_object_id__].[Clipboard_20230507T183202]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Clipboard_20230507T183202' id='Clipboard_20230507T183202'>
+            <properties context=''>
+              <relation connection='Clipboard_20230507T183202leaf' name='Clipboard_20230507T183202#txt' table='[Clipboard_20230507T183202#txt]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator='&#9;'>
+                  <column datatype='string' name='City' ordinal='0' />
+                  <column datatype='real' name='Latitude' ordinal='1' />
+                  <column datatype='real' name='Longitude' ordinal='2' />
+                  <column datatype='string' name='Neighborhooods - Analysis Boundaries' ordinal='3' />
+                  <column datatype='real' name='Avg. Response Time' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Call Types'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <_.fcp.ObjectModelTableType.false...column caption='Fire_Department_Calls_for_Service_final.csv' datatype='integer' name='[__tableau_internal_object_id__].[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Call Type]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.true...column caption='Fire_Department_Calls_for_Service_final.csv' datatype='table' name='[__tableau_internal_object_id__].[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Call Type]' derivation='None' name='[none:Call Type:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <color column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Call Type:nk]' />
+              <wedge-size column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]' />
+              <size column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{AB699844-F8BC-4EED-9C1F-5F0596E4FE73}' />
+    </worksheet>
+    <worksheet name='Call Types VS Response Time'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <column datatype='string' name='[Call Type]' role='dimension' type='nominal' />
+            <column-instance column='[responseTime]' derivation='Avg' name='[avg:responseTime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Call Type]' derivation='None' name='[none:Call Type:nk]' pivot='key' type='nominal' />
+            <column caption='Response Time' datatype='real' name='[responseTime]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Call Type:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]</rows>
+        <cols>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Call Type:nk]</cols>
+      </table>
+      <simple-id uuid='{6B4B786F-B3E8-4827-A8CB-CD99F164EAC6}' />
+    </worksheet>
+    <worksheet name='Neighborhoods VS times'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <_.fcp.ObjectModelTableType.false...column caption='Fire_Department_Calls_for_Service_final.csv' datatype='integer' name='[__tableau_internal_object_id__].[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Neighborhooods - Analysis Boundaries]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+            <_.fcp.ObjectModelTableType.true...column caption='Fire_Department_Calls_for_Service_final.csv' datatype='table' name='[__tableau_internal_object_id__].[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[responseTime]' derivation='Avg' name='[avg:responseTime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[timetaken]' derivation='Avg' name='[avg:timetaken:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Neighborhooods - Analysis Boundaries]' derivation='None' name='[none:Neighborhooods - Analysis Boundaries:nk]' pivot='key' type='nominal' />
+            <column caption='Response Time' datatype='real' name='[responseTime]' role='measure' type='quantitative' />
+            <column caption='Timetaken' datatype='real' name='[timetaken]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:timetaken:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:timetaken:qk] + ([federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk] + [federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]))</rows>
+        <cols>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]</cols>
+      </table>
+      <simple-id uuid='{76867BCC-480F-4FB9-85C3-31BB6737D15A}' />
+    </worksheet>
+    <worksheet name='Neightbohoods Analysis Top Average Response Times'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <column datatype='string' name='[Neighborhooods - Analysis Boundaries]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+            <column-instance column='[responseTime]' derivation='Avg' name='[avg:responseTime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Neighborhooods - Analysis Boundaries]' derivation='None' name='[none:Neighborhooods - Analysis Boundaries:nk]' pivot='key' type='nominal' />
+            <column caption='Response Time' datatype='real' name='[responseTime]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <computed-sort column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]' direction='DESC' using='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]' />
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]' />
+              <text column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{463ABBFE-6765-427E-AEDB-2AD877932A62}' />
+    </worksheet>
+    <worksheet name='Response Times on Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <column datatype='string' name='[Neighborhooods - Analysis Boundaries]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+            <column-instance column='[responseTime]' derivation='Attribute' name='[attr:responseTime:qk]' pivot='key' type='quantitative' />
+            <column aggregation='Avg' caption='Latitude' datatype='real' name='[latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' caption='Longitude' datatype='real' name='[longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[Neighborhooods - Analysis Boundaries]' derivation='None' name='[none:Neighborhooods - Analysis Boundaries:nk]' pivot='key' type='nominal' />
+            <column-instance column='[latitude]' derivation='None' name='[none:latitude:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[longitude]' derivation='None' name='[none:longitude:qk]' pivot='key' type='quantitative' />
+            <column caption='Response Time' datatype='real' name='[responseTime]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:latitude:qk]' field-type='quantitative' max='4556727.9512346918' min='4535568.4912444232' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:longitude:qk]' field-type='quantitative' max='-13621003.73296527' min='-13644228.891748272' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]' />
+              <size column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[attr:responseTime:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:latitude:qk]</rows>
+        <cols>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:longitude:qk]</cols>
+      </table>
+      <simple-id uuid='{93505912-92C8-4BE6-8173-61CC6204C593}' />
+    </worksheet>
+    <worksheet name='TimeTaken VS Day'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <column datatype='date' name='[Call Date]' role='dimension' type='ordinal' />
+            <column caption='Incident Day Str' datatype='string' name='[IncidentDayStr]' role='dimension' type='nominal' />
+            <column-instance column='[responseTime]' derivation='Avg' name='[avg:responseTime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[timetaken]' derivation='Avg' name='[avg:timetaken:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[IncidentDayStr]' derivation='None' name='[none:IncidentDayStr:nk]' pivot='key' type='nominal' />
+            <column caption='Response Time' datatype='real' name='[responseTime]' role='measure' type='quantitative' />
+            <column-instance column='[timetaken]' derivation='Sum' name='[sum:timetaken:qk]' pivot='key' type='quantitative' />
+            <column caption='Timetaken' datatype='real' name='[timetaken]' role='measure' type='quantitative' />
+            <column-instance column='[Call Date]' derivation='Year' name='[yr:Call Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[yr:Call Date:ok]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[yr:Call Date:ok]' member='2020' />
+              <groupfilter function='member' level='[yr:Call Date:ok]' member='2021' />
+              <groupfilter function='member' level='[yr:Call Date:ok]' member='2022' />
+              <groupfilter function='member' level='[yr:Call Date:ok]' member='2023' />
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:IncidentDayStr:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[sum:timetaken:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[yr:Call Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:timetaken:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:timetaken:qk] + [federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk])</rows>
+        <cols>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:IncidentDayStr:nk]</cols>
+      </table>
+      <simple-id uuid='{7BD7DFEB-2224-4841-8432-02F150C378DC}' />
+    </worksheet>
+    <worksheet name='Times over the years'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <column datatype='date' name='[Call Date]' role='dimension' type='ordinal' />
+            <column caption='Arrival Time' datatype='real' name='[arrivalTime]' role='measure' type='quantitative' />
+            <column-instance column='[arrivalTime]' derivation='Avg' name='[avg:arrivalTime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[responseTime]' derivation='Avg' name='[avg:responseTime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[timetaken]' derivation='Avg' name='[avg:timetaken:qk]' pivot='key' type='quantitative' />
+            <column caption='Response Time' datatype='real' name='[responseTime]' role='measure' type='quantitative' />
+            <column caption='Timetaken' datatype='real' name='[timetaken]' role='measure' type='quantitative' />
+            <column-instance column='[Call Date]' derivation='Year' name='[yr:Call Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:arrivalTime:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:timetaken:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:arrivalTime:qk] + ([federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:timetaken:qk] + [federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]))</rows>
+        <cols>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[yr:Call Date:ok]</cols>
+      </table>
+      <simple-id uuid='{74D4C3CF-261D-4B30-A006-30D431821F48}' />
+    </worksheet>
+    <worksheet name='Transport Times vs Neighborhoods'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fire_Department_Calls_for_Service_final' name='federated.1ekev2b0oyzt8i1683eiq0w5ce3i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ekev2b0oyzt8i1683eiq0w5ce3i'>
+            <column datatype='string' name='[Neighborhooods - Analysis Boundaries]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+            <column-instance column='[transportTime]' derivation='Avg' name='[avg:transportTime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Neighborhooods - Analysis Boundaries]' derivation='None' name='[none:Neighborhooods - Analysis Boundaries:nk]' pivot='key' type='nominal' />
+            <column caption='Transport Time' datatype='real' name='[transportTime]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:transportTime:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:transportTime:qk]</rows>
+        <cols>[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]</cols>
+      </table>
+      <simple-id uuid='{135C9FAE-9D8D-4F05-81F6-2D76E7E69799}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='51'>
+    <window class='worksheet' maximized='true' name='Response Times on Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Neighborhooods - Analysis Boundaries:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[attr:responseTime:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{232515C0-A905-4403-AEE9-B1E96895F6BE}' />
+    </window>
+    <window class='worksheet' name='Neightbohoods Analysis Top Average Response Times'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[avg:responseTime:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{604EFE82-AE5F-4E88-B626-87ACDCF2100E}' />
+    </window>
+    <window class='worksheet' name='Call Types'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[none:Call Type:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1ekev2b0oyzt8i1683eiq0w5ce3i].[__tableau_internal_object_id__].[cnt:Fire_Department_Calls_for_Service_final.csv_52A22CA3852B4ED9B428DE7C687A649E:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{76CB3A73-D8DF-4557-AA34-442FD4B2CC51}' />
+    </window>
+    <window class='worksheet' name='Call Types VS Response Time'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{100106C1-B2A8-41CC-AB80-60C62407C847}' />
+    </window>
+    <window class='worksheet' name='TimeTaken VS Day'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5A7D755F-B93B-4FCF-890C-A9E6A34D56DF}' />
+    </window>
+    <window class='worksheet' name='Times over the years'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C31F9FEC-575F-4357-AABE-0AA92A0D3238}' />
+    </window>
+    <window class='worksheet' name='Neighborhoods VS times'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0830F10E-2543-4C3E-9D6C-FEE184D82988}' />
+    </window>
+    <window class='worksheet' name='Transport Times vs Neighborhoods'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{CB470ADB-A765-4F15-9B71-7908BCD6CD57}' />
+    </window>
+  </windows>
+</workbook>
